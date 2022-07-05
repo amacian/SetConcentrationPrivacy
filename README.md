@@ -1,7 +1,7 @@
 # Positives concentration and Approximate Membership Check Filters
 This repository includes the implementation in Java of the Experiments included in the paper:
 
-P. Reviriego, A. Sánchez-Macián, E. Merino-Gómez, O. Rottenstreich, S. Liu and F. Lombardi, "Exploiting Positives Concentration (EPC) to Break the Privacy of Approximate Membership Check Filters", under submission to IEEE...
+P. Reviriego, A. Sánchez-Macián, E. Merino-Gómez, O. Rottenstreich, S. Liu and F. Lombardi, "Attacking the Privacy of Approximate Membership Check Filters by Positive Concentration", under submission to IEEE Transactions on Computers.
 
 # Dependencies
 - Guava >=30.1.1
