@@ -65,7 +65,7 @@ public class BlackBoxTester {
 		}
 
 		// Printing header.
-		System.out.println("iter;positives;fingerbits;nPosIn24;numSubNet24;totalPos;totalTP;totalFP;porcTP;porcFP");
+		System.out.println("iter;positives;fingerbits;nPosIn24;numSubNet24;totalPos;totalTP;totalFP;porcTP;porcFP;time");
 		
 		// Run as many iterations as requested by the user
 		for (int i=0; i<iterations;i++) {
@@ -93,6 +93,8 @@ public class BlackBoxTester {
 				System.out.println("Validation failed");
 			}
 		}
+		
+		long init = System.nanoTime();
 		
 		// Store the number of ranges that return a particular number of positive IPs when testing against the filter
 		Hashtable<Integer, Integer> rangesPerI = new Hashtable<Integer, Integer>();
@@ -134,6 +136,10 @@ public class BlackBoxTester {
 			positivesPerI.put(fps, pPos);
 		}
 
+		long end = System.nanoTime();
+		
+		// Calculate the total time that was needed to find the concentration for ranges of IPs
+		long time = end - init;
 		// For each set of ranges that have i positives
 		for (Integer i : rangesPerI.keySet()) {
 			// number of ranges with i positives
@@ -147,7 +153,7 @@ public class BlackBoxTester {
 			// Print the result
 			System.out.println(iteration+";"+completeSet.size()+";"+fBits+";"+ i +";"+ rangesPerI.get(i) + ";" + 
 							totalPos + ";" + totalTPos + ";" + totalFPos + ";" + ((totalPos==0)?0:(totalTPos)/(double)totalPos) + ";" + 
-							 ((totalPos==0)?0:totalFPos/(double)totalPos));
+							 ((totalPos==0)?0:totalFPos/(double)totalPos)+";"+time);
 		}
 		System.out.flush();
 	}
